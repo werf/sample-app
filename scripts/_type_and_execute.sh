@@ -1,5 +1,5 @@
 #!/bin/bash
 
 while read p; do
-	echo -n '$ ' ; echo "${p}" | pv -qL 11 ; eval ${p}
+	echo -n '$ ' ; echo "${p}" | pv -qL 15 ; eval ${p}
 done < ${1}
