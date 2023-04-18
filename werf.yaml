@@ -1,5 +1,5 @@
 configVersion: 1
-project: sample-app-2
+project: sample-app
 gitWorktree:
   allowFetchOriginBranchesAndTags: false
 cleanup:
