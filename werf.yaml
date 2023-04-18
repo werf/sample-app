@@ -1,0 +1,17 @@
+configVersion: 1
+project: sample-app-2
+gitWorktree:
+  allowFetchOriginBranchesAndTags: false
+cleanup:
+  disableKubernetesBasedPolicy: true
+  disableBuiltWithinLastNHoursPolicy: true
+  keepPolicies:
+  - references:
+      branch: /.*/
+    imagesPerReference:
+      last: 1
+---
+image: app
+dockerfile: ./Dockerfile
+args:
+  CACHE_VERSION: {{ env "CACHE_VERSION" }}
