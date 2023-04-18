@@ -4,7 +4,7 @@ source scripts/env.sh
 
 kubectl delete ns --ignore-not-found sample-app sample-app-2
 
-werf converge --repo k3d-registry.sample-app.test:5000/sample-app --save-build-report=/tmp/images.json
+werf converge --repo k3d-registry.sample-app.test:5000/sample-app --save-build-report --build-report-path=/tmp/images.json
 
 APP_IMAGE=$(cat /tmp/images.json | jq -r .Images.app.DockerImageName)
 
