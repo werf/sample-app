@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export CACHE_VERSION=""
 export WERF_BUILDAH_MODE=native-chroot
 export WERF_INSECURE_REGISTRY=1
 export WERF_FORCE_STAGED_DOCKERFILE=1
