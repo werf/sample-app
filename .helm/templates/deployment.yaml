@@ -14,8 +14,14 @@ spec:
       initContainers:
       - name: init
         image: {{ .Values.werf.image.app }}
-        command: [ "/bin/bash", "-lec", "for i in {1..10} ; do date ; sleep 1 ; done" ]
+        command: [ "/bin/bash", "-lec", "for i in {1..5} ; do echo \"init - $(date) $(( 6-i ))\" ; sleep 1 ; done" ]
       containers:
       - name: app
         image: {{ .Values.werf.image.app }}
         command: [ "npm", "start" ]
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
