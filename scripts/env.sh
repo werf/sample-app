@@ -1,5 +1,11 @@
 #!/bin/bash
 
+for var in $(env | grep LC_ | grep -v LC_LANG | cut -d'=' -f1) ; do
+	eval "export $var=en_US.UTF-8"
+done
+export LC_LANG=en
+export TZ=
+
 export CACHE_VERSION=""
 export WERF_BUILDAH_MODE=native-chroot
 export WERF_INSECURE_REGISTRY=1
