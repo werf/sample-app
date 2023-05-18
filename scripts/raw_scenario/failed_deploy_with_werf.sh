@@ -1,8 +1,7 @@
-werf converge --require-built-images --repo k3d-registry.sample-app.test:5000/sample-app
-# seems we have a broken pod, which cannot start
-# let's check out deployment manifest
+werf converge --repo k3d-registry.sample-app.test:5000/sample-app
+# seems we have a broken pod which cannot start
 cat .helm/templates/deployment.yaml
-# typo in the command field, let's fix it
+# typo in the command field
 sed -e 's|"star"|"start"|' -i .helm/templates/deployment.yaml
-werf converge --require-built-images --repo k3d-registry.sample-app.test:5000/sample-app
+werf converge --repo k3d-registry.sample-app.test:5000/sample-app
 curl sample-app.test/ping
