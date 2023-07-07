@@ -11,3 +11,7 @@ cleanup:
     imagesPerReference:
       last: 1
 ---
+image: app
+dockerfile: ./Dockerfile
+args:
+  CACHE_VERSION: {{ env "CACHE_VERSION" }}
