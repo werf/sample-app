@@ -11,3 +11,23 @@ cleanup:
     imagesPerReference:
       last: 1
 ---
+image: test
+from: ubuntu:16.04
+git:
+- add: /
+  to: /app
+ansible:
+  install: []
+---
+image: app
+final: false
+dockerfile: ./Dockerfile
+---
+image: test2
+from: ubuntu:16.04
+  # fromArtifact: test
+  # import:
+  #- image: test
+  #add: /tmp
+  #to: /tmp
+  #after: install
