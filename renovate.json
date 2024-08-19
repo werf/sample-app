@@ -1,10 +1,16 @@
 {
-  "extends": ["config:recommended"],
+  "extends": ["config:base"],
+  "enabledManagers": ["dockerfile", "regex"],
+  "dockerfile": {
+    "pinDigests": true
+  },
   "customManagers": [
     {
       "customType": "regex",
       "fileMatch": ["werf\\.yaml$"],
-      "matchStrings": ["from:\\s*(?<depName>[^:]+)(:(?<currentValue>[^@]+))?"],
+      "matchStrings": [
+        "^\\s*from:\\s*(?<depName>[^:]+)(:(?<currentValue>[^@\\s]+))?\\s*$"
+      ],
       "depNameTemplate": "{{depName}}",
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker",
@@ -12,7 +18,3 @@
     }
   ]
 }
-
-
-
-
