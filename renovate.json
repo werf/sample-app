@@ -1,0 +1,18 @@
+{
+  "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["werf\\.yaml$"],
+      "matchStrings": ["from:\\s*(?<depName>[^:]+)(:(?<currentValue>[^@]+))?"],
+      "depNameTemplate": "{{depName}}",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker",
+      "extractVersionTemplate": "{{{currentValue}}}@{{{digest}}}"
+    }
+  ]
+}
+
+
+
+
